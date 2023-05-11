@@ -1,0 +1,8 @@
+### GET request with query parameters
+GET http://localhost:4000/api/random?min=1&max=100
+
+### GET request with array parameters
+GET http://localhost:4000/api/person?properties=firstName,lastName,email
+
+### GET request with string parameters
+GET http://localhost:4000/api/count?str=18pad085!
