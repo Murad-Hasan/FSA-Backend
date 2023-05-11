@@ -5,7 +5,7 @@
 - We have a function that can accept a string as an argument and return an object containing the number of letters, number of symbols and number of numeric characters.
 
 
-## API Endpoints
+## API Endpoints (GET)
 - api/random?min=1&max=100
 - api/person?properties=firstName,lastName,email
 - api/count?str=18pad085!#$
