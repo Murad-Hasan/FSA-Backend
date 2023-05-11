@@ -11,3 +11,8 @@
 - api/random?min=1&max=100
 - api/person?properties=firstName,lastName,email
 - api/count?str=18pad085!#$
+
+## Dependencies
+- express
+- @faker-js/faker (dev)
+- nodemon (dev)
