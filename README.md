@@ -5,7 +5,7 @@
 - We have a function that can accept a string as an argument and return an object containing the number of letters, number of symbols and number of numeric characters.
 
 ## Business Logic file location
-- src/businessLogic.js
+- [src/businessLogic.js](https://github.com/Murad-Hasan/FSA-Backend/blob/assignment-1/src/businessLogic.js)
 
 ## API Endpoints (GET)
 - api/random?min=1&max=100
