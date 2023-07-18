@@ -1,0 +1,12 @@
+### POST request for creating a new user
+POST http://localhost:4000/user
+Content-Type: application/json
+
+{
+  "name": {
+    "first": "John",
+    "last": "Doe"
+  },
+  "email": "difasdasddsadj@gmail.com",
+  "phone": "534-343-4545"
+}
