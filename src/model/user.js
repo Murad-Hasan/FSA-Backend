@@ -40,6 +40,10 @@ const userSchema = new Schema({
     }
 },{timestamps: true})
 
-const user = model('user', userSchema);
+userSchema.virtual('fullName').get(function () {
+    return `${this.name.first} ${this.name.last}`;
+});
 
-module.exports = user;
+const User = model('User', userSchema);
+
+module.exports = User;

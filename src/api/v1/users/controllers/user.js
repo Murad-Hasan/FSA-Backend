@@ -1,6 +1,10 @@
 const {createUser, findUser} = require("../../../../lib/user");
 exports.findUserController = async (req, res) => {
     const users = await findUser();
+    //get fullname from virtual
+    users.forEach(user => {
+        console.log(user.fullName);
+    });
     res.status(200).json({
         status: 'success',
         data: users
