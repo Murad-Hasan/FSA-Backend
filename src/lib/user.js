@@ -14,7 +14,6 @@ const findUserById = async (id) => {
     return user;
 };
 
-
 const createUser = async ({name, email, phone}) => {
     //save data to database
         let user;

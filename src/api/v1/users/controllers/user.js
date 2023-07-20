@@ -1,24 +1,40 @@
 const {createUser, findUser} = require("../../../../lib/user");
 exports.findUserController = async (req, res) => {
-    const users = await findUser();
-    let response = [];
-    // add fullName in response and send it to client
-    users.forEach(user => {
-        response.push({
-            ...user._doc,
-            fullName: user.fullName
+    try{
+        const users = await findUser();
+        let response = [];
+        // add fullName in response and send it to client
+        users.forEach(user => {
+            response.push({
+                ...user._doc,
+                fullName: user.fullName
+            })
+        });
+
+        // const user = await findUserById('64b817a62191d865e125f360')
+        //
+        // const sameNameUsers = await user.findAllSameName();
+        // console.log(sameNameUsers);
+
+        if (response.length !== 0) {
+            res.status(200).json({
+                status: 'success',
+                data: response
+            })
+        }else{
+            res.status(404).json({
+                status: 'error',
+                code: 404,
+                message: 'No users found'
+            })
+        }
+    }catch (e) {
+        res.status(500).json({
+            status: 'error',
+            code: 500,
+            message: e.message
         })
-    });
-
-    // const user = await findUserById('64b817a62191d865e125f360')
-    //
-    // const sameNameUsers = await user.findAllSameName();
-    // console.log(sameNameUsers);
-
-    res.status(200).json({
-        status: 'success',
-        data: response
-    })
+    }
 }
 
 exports.createUserController = async (req, res) => {
