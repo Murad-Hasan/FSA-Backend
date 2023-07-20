@@ -1,9 +1,13 @@
 const User = require('../model/user');
 
-const findUser = async () => {
+const findUser = async (queryData) => {
     //find data from database
     let users;
-    users = await User.find();
+    if (queryData.id) {
+        users = await User.find({_id: queryData.id});
+    }else{
+        users = await User.find();
+    }
     return users;
 }
 //findById

@@ -1,5 +1,5 @@
 ### GET request for getting all users
-GET http://localhost:4000/user
+GET http://localhost:4000/user?id=64b9109baa34314fde4627ce
 Content-Type: application/json
 
 ### GET request for getting a user by id

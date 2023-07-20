@@ -1,9 +1,10 @@
 const {createUser, findUser, findUserById} = require("../../../../lib/user");
 exports.findUserController = async (req, res) => {
+    const queryData = req.query;
+    // console.log(queryData)
     try{
-        const users = await findUser();
+        const users = await findUser(queryData);
         let response = [];
-        // add fullName in response and send it to client
         users.forEach(user => {
             response.push({
                 ...user._doc,
@@ -15,6 +16,7 @@ exports.findUserController = async (req, res) => {
             res.status(200).json({
                 success: true,
                 message: 'Return All users',
+                totalUsers: response.length,
                 data: response
             })
         }else{
