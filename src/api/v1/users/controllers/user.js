@@ -1,4 +1,4 @@
-const {createUser, findUser} = require("../../../../lib/user");
+const {createUser, findUser, findUserById} = require("../../../../lib/user");
 exports.findUserController = async (req, res) => {
     try{
         const users = await findUser();
@@ -11,14 +11,10 @@ exports.findUserController = async (req, res) => {
             })
         });
 
-        // const user = await findUserById('64b817a62191d865e125f360')
-        //
-        // const sameNameUsers = await user.findAllSameName();
-        // console.log(sameNameUsers);
-
         if (response.length !== 0) {
             res.status(200).json({
-                status: 'success',
+                success: true,
+                message: 'Return All users',
                 data: response
             })
         }else{
@@ -36,12 +32,40 @@ exports.findUserController = async (req, res) => {
         })
     }
 }
+exports.findUserByIdController = async (req, res) => {
+    const {id} = req.params;
+    try{
+        const user = await findUserById(id);
+        // const sameNameUsers = await user.findAllSameName();
+        // console.log(sameNameUsers);
+        if (user) {
+            res.status(200).json({
+                success: true,
+                code:200,
+                message: 'Return single user',
+                data: user
+            })
+        }else{
+            res.status(404).json({
+                status: 'error',
+                code: 404,
+                message: 'user not found'
+            })
+    }}
+    catch (e) {
+        res.status(500).json({
+            status: 'error',
+            code: 500,
+            message: e.message
+        })
+    }
+};
 
 exports.createUserController = async (req, res) => {
     const {name, email, phone} = req.body;
     try {
         const user = await createUser({name, email, phone});
-        res.status(200).json({
+        res.status(201).json({
             status: 'success',
             message: 'user created successfully',
             data: user
