@@ -1,13 +1,23 @@
 const {createUser, findUser} = require("../../../../lib/user");
 exports.findUserController = async (req, res) => {
     const users = await findUser();
-    //get fullname from virtual
+    let response = [];
+    // add fullName in response and send it to client
     users.forEach(user => {
-        console.log(user.fullName);
+        response.push({
+            ...user._doc,
+            fullName: user.fullName
+        })
     });
+
+    // const user = await findUserById('64b817a62191d865e125f360')
+    //
+    // const sameNameUsers = await user.findAllSameName();
+    // console.log(sameNameUsers);
+
     res.status(200).json({
         status: 'success',
-        data: users
+        data: response
     })
 }
 

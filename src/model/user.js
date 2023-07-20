@@ -1,4 +1,5 @@
-const {model, Schema} = require('mongoose')
+const mongoose = require('mongoose');
+const {Schema, model} = mongoose;
 
 
 const userSchema = new Schema({
@@ -43,6 +44,10 @@ const userSchema = new Schema({
 userSchema.virtual('fullName').get(function () {
     return `${this.name.first} ${this.name.last}`;
 });
+
+userSchema.methods.findAllSameName = function (cb) {
+    return mongoose.model('User').find({name: this.name}, cb);
+};
 
 const User = model('User', userSchema);
 

@@ -10,9 +10,9 @@ Content-Type: application/json
 
 {
   "name": {
-    "first": "John",
-    "last": "Doe"
+    "first": "kals",
+    "last": "fka"
   },
-  "email": "difasdasddsadj@gmail.com",
-  "phone": "534-343-4545"
+  "email": "ddsadj@gmail.com",
+  "phone": "634-343-4549"
 }

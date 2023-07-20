@@ -6,6 +6,14 @@ const findUser = async () => {
     users = await User.find();
     return users;
 }
+//findById
+
+const findUserById = async (id) => {
+    let user;
+    user = await User.findById(id);
+    return user;
+};
+
 
 const createUser = async ({name, email, phone}) => {
     //save data to database
@@ -14,4 +22,4 @@ const createUser = async ({name, email, phone}) => {
         return user.save();
 };
 
-module.exports = {findUser, createUser};
+module.exports = {findUser, createUser, findUserById};
